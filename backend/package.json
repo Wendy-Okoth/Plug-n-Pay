@@ -13,7 +13,12 @@
     "test:watch": "jest --watch",
     "clean": "rm -rf dist"
   },
-  "keywords": ["avalanche", "x402", "subscriptions", "api"],
+  "keywords": [
+    "avalanche",
+    "x402",
+    "subscriptions",
+    "api"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "description": "Plug-n-Pay backend - x402 powered API subscriptions",
@@ -29,7 +34,8 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.1",
     "pg": "^8.16.3",
-    "redis": "^5.10.0"
+    "redis": "^5.10.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -40,6 +46,7 @@
     "@types/node": "^24.10.1",
     "@types/pg": "^8.15.6",
     "@types/redis": "^4.0.10",
+    "@types/uuid": "^10.0.0",
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "ts-jest": "^29.4.5",
