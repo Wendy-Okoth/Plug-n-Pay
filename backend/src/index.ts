@@ -5,6 +5,11 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { testConnection } from './config/database';
 
+// Import routes
+import developerRoutes from './routes/developer';
+import subscriptionRoutes from './routes/subscription';
+import paymentRoutes from './routes/payment';
+
 // Load environment variables
 dotenv.config();
 
@@ -28,6 +33,11 @@ testConnection().then(success => {
   }
 });
 
+// Routes
+app.use('/api/developers', developerRoutes);
+app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/payments', paymentRoutes);
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ 
@@ -47,7 +57,7 @@ app.use((error: any, req: express.Request, res: express.Response, next: express.
   });
 });
 
-// FIX: Proper 404 handler - remove the asterisk parameter
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
@@ -56,4 +66,12 @@ app.listen(PORT, () => {
   console.log(`🚀 Plug-n-Pay API running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔗 CORS enabled for: ${process.env.CORS_ORIGIN}`);
+  console.log(`🗂️  Available routes:`);
+  console.log(`   - GET  /health`);
+  console.log(`   - POST /api/developers/register`);
+  console.log(`   - GET  /api/developers/profile`);
+  console.log(`   - POST /api/subscriptions/plans`);
+  console.log(`   - GET  /api/subscriptions/plans`);
+  console.log(`   - POST /api/payments/check-access`);
+  console.log(`   - POST /api/payments/verify`);
 });
